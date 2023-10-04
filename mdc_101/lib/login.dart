@@ -22,11 +22,11 @@ class _LoginPageState extends State<LoginPage> {
                 height: 100,
               ),
               const Image(image: AssetImage("assets/diamond.png")),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Text(
                   "SHRINE",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.headlineSmall,
                 ),
               ),
               const SizedBox(
@@ -37,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: TextField(
                     controller: _usernameController,
                     decoration: const InputDecoration(
-                      filled: true,
+                      //filled: true,
                       labelText: "Username",
                     )),
               ),
@@ -47,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
                     controller: _passwordController,
                     obscureText: true,
                     decoration: const InputDecoration(
-                      filled: true,
+                      //filled: true,
                       labelText: "Password",
                     )),
               ),
@@ -57,11 +57,15 @@ class _LoginPageState extends State<LoginPage> {
                   alignment: MainAxisAlignment.end,
                   children: [
                     TextButton(
-                        onPressed: () {
-                          _usernameController.clear();
-                          _passwordController.clear();
-                        },
-                        child: const Text("CANCEL")),
+                      onPressed: () {
+                        _usernameController.clear();
+                        _passwordController.clear();
+                      },
+                      child: const Text("CANCEL"),
+                      style: TextButton.styleFrom(
+                        primary: Theme.of(context).colorScheme.secondary,
+                      ),
+                    ),
                     ElevatedButton(
                         onPressed: () {
                           if (_usernameController.text == "admin" &&
